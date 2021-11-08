@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE:  epoc-db
+  IMAGE:  ${{ github.repository }}
 
 jobs:
   test_build:

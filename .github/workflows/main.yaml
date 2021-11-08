@@ -1,4 +1,4 @@
-name: Pull Request
+name: Main
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE:  epoc-db
+  IMAGE:  ${{ github.repository }}
 
 jobs:
   test_build:
@@ -27,7 +27,7 @@ jobs:
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
-        password: ${{ secrets.GHCR_PAT }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Define image meta
       id: docker_meta
