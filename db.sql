@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.0
--- Dumped by pg_dump version 14.0
+-- Dumped from database version 14.1 (Debian 14.1-1.pgdg110+1)
+-- Dumped by pg_dump version 14.1 (Debian 14.1-1.pgdg110+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -266,13 +266,14 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create customer	SQL	V1__Create_customer.sql	-315305056	user	2021-11-04 14:06:04.389791	15	t
-2	2	Create emplyee	SQL	V2__Create_emplyee.sql	1175339240	user	2021-11-04 14:06:04.415293	15	t
-3	3	Create project	SQL	V3__Create_project.sql	-866125344	user	2021-11-04 14:06:04.439838	15	t
-4	4	Create Timesheet	SQL	V4__Create_Timesheet.sql	-1856208886	user	2021-11-04 14:06:04.4631	13	t
-5	5	Create task	SQL	V5__Create_task.sql	-51445806	user	2021-11-04 14:06:04.483552	12	t
-6	6	Create time category	SQL	V6__Create_time_category.sql	-1931552361	user	2021-11-04 14:06:04.502061	15	t
-7	7	Create timesheet entry	SQL	V7__Create_timesheet_entry.sql	137305358	user	2021-11-04 14:06:04.523003	11	t
+1	1	Create customer	SQL	V1__Create_customer.sql	-315305056	user	2021-12-10 14:17:36.066846	22	t
+2	2	Create emplyee	SQL	V2__Create_emplyee.sql	1175339240	user	2021-12-10 14:17:36.104423	20	t
+3	3	Create project	SQL	V3__Create_project.sql	-866125344	user	2021-12-10 14:17:36.130617	15	t
+4	4	Create Timesheet	SQL	V4__Create_Timesheet.sql	-1856208886	user	2021-12-10 14:17:36.151714	15	t
+5	5	Create task	SQL	V5__Create_task.sql	-51445806	user	2021-12-10 14:17:36.170674	14	t
+6	6	Create time category	SQL	V6__Create_time_category.sql	-1931552361	user	2021-12-10 14:17:36.189042	20	t
+7	7	Create timesheet entry	SQL	V7__Create_timesheet_entry.sql	137305358	user	2021-12-10 14:17:36.214027	9	t
+8	8	Add unique constraint	SQL	V8__Add_unique_constraint.sql	-1878548564	user	2021-12-10 14:17:36.226763	6	t
 \.
 
 
@@ -430,6 +431,14 @@ ALTER TABLE ONLY public.timesheet_entry
 
 
 --
+-- Name: timesheet uc_91f52f1090db07993be2657d9; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.timesheet
+    ADD CONSTRAINT uc_91f52f1090db07993be2657d9 UNIQUE (project_id, employee_id);
+
+
+--
 -- Name: customer uc_customer_name; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -527,3 +536,4 @@ ALTER TABLE ONLY public.timesheet_entry
 --
 -- PostgreSQL database dump complete
 --
+
