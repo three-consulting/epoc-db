@@ -196,7 +196,8 @@ CREATE TABLE public.timesheet (
     description character varying(255),
     allocation double precision NOT NULL,
     created timestamp without time zone NOT NULL,
-    updated timestamp without time zone NOT NULL
+    updated timestamp without time zone NOT NULL,
+    status character varying(15)
 );
 
 
@@ -266,14 +267,15 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create customer	SQL	V1__Create_customer.sql	-315305056	user	2021-12-10 14:17:36.066846	22	t
-2	2	Create emplyee	SQL	V2__Create_emplyee.sql	1175339240	user	2021-12-10 14:17:36.104423	20	t
-3	3	Create project	SQL	V3__Create_project.sql	-866125344	user	2021-12-10 14:17:36.130617	15	t
-4	4	Create Timesheet	SQL	V4__Create_Timesheet.sql	-1856208886	user	2021-12-10 14:17:36.151714	15	t
-5	5	Create task	SQL	V5__Create_task.sql	-51445806	user	2021-12-10 14:17:36.170674	14	t
-6	6	Create time category	SQL	V6__Create_time_category.sql	-1931552361	user	2021-12-10 14:17:36.189042	20	t
-7	7	Create timesheet entry	SQL	V7__Create_timesheet_entry.sql	137305358	user	2021-12-10 14:17:36.214027	9	t
-8	8	Add unique constraint	SQL	V8__Add_unique_constraint.sql	-1878548564	user	2021-12-10 14:17:36.226763	6	t
+1	1	Create customer	SQL	V1__Create_customer.sql	-315305056	user	2022-01-11 11:13:09.723238	25	t
+2	2	Create emplyee	SQL	V2__Create_emplyee.sql	1175339240	user	2022-01-11 11:13:09.764639	20	t
+3	3	Create project	SQL	V3__Create_project.sql	-866125344	user	2022-01-11 11:13:09.79145	15	t
+4	4	Create Timesheet	SQL	V4__Create_Timesheet.sql	-1856208886	user	2022-01-11 11:13:09.811898	15	t
+5	5	Create task	SQL	V5__Create_task.sql	-51445806	user	2022-01-11 11:13:09.831699	14	t
+6	6	Create time category	SQL	V6__Create_time_category.sql	-1931552361	user	2022-01-11 11:13:09.850449	20	t
+7	7	Create timesheet entry	SQL	V7__Create_timesheet_entry.sql	137305358	user	2022-01-11 11:13:09.875651	9	t
+8	8	Add unique constraint	SQL	V8__Add_unique_constraint.sql	-1878548564	user	2022-01-11 11:13:09.889307	7	t
+9	9	Alter Timesheet	SQL	V9__Alter_Timesheet.sql	1120982338	user	2022-01-11 11:13:09.901459	1	t
 \.
 
 
@@ -305,7 +307,7 @@ COPY public.time_category (id, name, description, created, updated) FROM stdin;
 -- Data for Name: timesheet; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.timesheet (id, project_id, employee_id, name, description, allocation, created, updated) FROM stdin;
+COPY public.timesheet (id, project_id, employee_id, name, description, allocation, created, updated, status) FROM stdin;
 \.
 
 
