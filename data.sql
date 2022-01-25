@@ -19,10 +19,10 @@ VALUES
     (1, 1, 'test', 'testing', 100, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'ACTIVE'),
     (1, 2, 'test2', 'testing delete', 100, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'ACTIVE');
 
-INSERT INTO task(project_id, name, description, created, updated, status)
+INSERT INTO task(project_id, name, description, created, updated, billable, status)
 VALUES
-    (1, 'test', 'testing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'ACTIVE'),
-    (1, 'test2', 'testing delete', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'ACTIVE');
+    (1, 'test', 'testing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE, 'ACTIVE'),
+    (1, 'test2', 'testing delete', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE, 'ACTIVE');
 
 INSERT INTO time_category(name, description, created, updated)
 VALUES
