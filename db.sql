@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.1 (Debian 14.1-1.pgdg110+1)
--- Dumped by pg_dump version 14.1 (Debian 14.1-1.pgdg110+1)
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -101,15 +101,15 @@ CREATE TABLE public.flyway_schema_history (
 
 CREATE TABLE public.project (
     id bigint NOT NULL,
-    customer_id bigint,
-    employee_id bigint,
+    customer_id bigint NOT NULL,
+    employee_id bigint NOT NULL,
     name character varying(255) NOT NULL,
     description character varying(255),
     start_date date NOT NULL,
     end_date date,
     created timestamp without time zone NOT NULL,
     updated timestamp without time zone NOT NULL,
-    status character varying(15)
+    status character varying(255) NOT NULL
 );
 
 
@@ -138,8 +138,8 @@ CREATE TABLE public.task (
     description character varying(255),
     created timestamp without time zone NOT NULL,
     updated timestamp without time zone NOT NULL,
-    status character varying(255) NOT NULL,
-    billable boolean NOT NULL
+    billable boolean NOT NULL,
+    status character varying(255) NOT NULL
 );
 
 
@@ -194,10 +194,10 @@ CREATE TABLE public.timesheet (
     employee_id bigint NOT NULL,
     name character varying(255) NOT NULL,
     description character varying(255),
-    allocation double precision NOT NULL,
+    allocation integer NOT NULL,
     created timestamp without time zone NOT NULL,
     updated timestamp without time zone NOT NULL,
-    status character varying(15)
+    status character varying(255) NOT NULL
 );
 
 
@@ -267,17 +267,7 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create customer	SQL	V1__Create_customer.sql	-315305056	user	2022-01-21 14:54:28.637211	23	t
-2	2	Create emplyee	SQL	V2__Create_emplyee.sql	1175339240	user	2022-01-21 14:54:28.672734	21	t
-3	3	Create project	SQL	V3__Create_project.sql	-866125344	user	2022-01-21 14:54:28.699285	15	t
-4	4	Create Timesheet	SQL	V4__Create_Timesheet.sql	-1856208886	user	2022-01-21 14:54:28.720116	15	t
-5	5	Create task	SQL	V5__Create_task.sql	-51445806	user	2022-01-21 14:54:28.739791	14	t
-6	6	Create time category	SQL	V6__Create_time_category.sql	-1931552361	user	2022-01-21 14:54:28.758971	20	t
-7	7	Create timesheet entry	SQL	V7__Create_timesheet_entry.sql	137305358	user	2022-01-21 14:54:28.783798	9	t
-8	8	Add unique constraint	SQL	V8__Add_unique_constraint.sql	-1878548564	user	2022-01-21 14:54:28.796679	7	t
-9	9	Alter Timesheet	SQL	V9__Alter_Timesheet.sql	1120982338	user	2022-01-21 14:54:28.807712	0	t
-10	10	Alter Task	SQL	V10__Alter_Task.sql	-1059761902	user	2022-01-21 14:54:28.811822	1	t
-11	11	Add billable	SQL	V11__Add_billable.sql	-1809656843	user	2022-01-21 14:54:28.816655	0	t
+1	1	Create DB	SQL	V1__Create_DB.sql	425609091	user	2022-02-03 10:31:09.952233	107	t
 \.
 
 
@@ -293,7 +283,7 @@ COPY public.project (id, customer_id, employee_id, name, description, start_date
 -- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.task (id, project_id, name, description, created, updated, status, billable) FROM stdin;
+COPY public.task (id, project_id, name, description, created, updated, billable, status) FROM stdin;
 \.
 
 
