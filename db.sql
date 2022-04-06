@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.1
--- Dumped by pg_dump version 14.1
+-- Dumped from database version 14.2
+-- Dumped by pg_dump version 14.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -210,7 +210,7 @@ CREATE TABLE public.timesheet_entry (
     timesheet_id bigint NOT NULL,
     task_id bigint NOT NULL,
     time_category_id bigint NOT NULL,
-    quantity bigint NOT NULL,
+    quantity numeric NOT NULL,
     date date NOT NULL,
     description character varying(255),
     created timestamp without time zone NOT NULL,
@@ -267,7 +267,7 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create DB	SQL	V1__Create_DB.sql	425609091	user	2022-02-03 10:31:09.952233	107	t
+1	1	Create DB	SQL	V1__Create_DB.sql	2099822983	user	2022-04-06 13:16:49.753782	95	t
 \.
 
 
