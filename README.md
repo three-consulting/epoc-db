@@ -14,3 +14,17 @@ docker exec epoc_postgres_1 pg_dump -U user -d epoc -O -x > db.sql
 ```
 
 When editing only data, edit `data.sql` by hand.
+
+## edit secret data
+
+1. Decrypt
+```bash
+gopass show 3/epoc/GPG | gpg -q --batch --yes --decrypt-files --passphrase-fd 0 *.gpg
+```
+2. Modify decrypted sql files
+3. Encrypt
+```bash
+for filename in $( find -name "*-secrets.sql" ); do \
+  gpg --batch --yes --symmetric --passphrase $(gopass show 3/epoc/GPG) --cipher-algo AES-256 $filename; \
+done
+```
