@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.2
--- Dumped by pg_dump version 14.2
+-- Dumped from database version 14.3
+-- Dumped by pg_dump version 14.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -197,7 +197,8 @@ CREATE TABLE public.timesheet (
     allocation integer NOT NULL,
     created timestamp without time zone NOT NULL,
     updated timestamp without time zone NOT NULL,
-    status character varying(255) NOT NULL
+    status character varying(255) NOT NULL,
+    rate numeric DEFAULT 0 NOT NULL
 );
 
 
@@ -267,7 +268,8 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create DB	SQL	V1__Create_DB.sql	2099822983	user	2022-04-06 13:16:49.753782	95	t
+1	1	Create DB	SQL	V1__Create_DB.sql	2099822983	user	2022-06-14 10:12:41.886186	75	t
+2	2	Add Timesheet rate	SQL	V2__Add_Timesheet_rate.sql	-625244344	user	2022-06-14 10:12:41.977882	2	t
 \.
 
 
@@ -299,7 +301,7 @@ COPY public.time_category (id, name, description, created, updated) FROM stdin;
 -- Data for Name: timesheet; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.timesheet (id, project_id, employee_id, name, description, allocation, created, updated, status) FROM stdin;
+COPY public.timesheet (id, project_id, employee_id, name, description, allocation, created, updated, status, rate) FROM stdin;
 \.
 
 
