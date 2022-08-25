@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.4
--- Dumped by pg_dump version 14.4
+-- Dumped from database version 14.5
+-- Dumped by pg_dump version 14.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -61,7 +61,7 @@ CREATE TABLE public.employee (
     created timestamp without time zone NOT NULL,
     updated timestamp without time zone NOT NULL,
     firebase_uid character varying(255),
-    role character varying(255) NOT NULL
+    role character varying(255) DEFAULT 'USER'::character varying NOT NULL
 );
 
 
@@ -270,9 +270,9 @@ COPY public.employee (id, first_name, last_name, email, start_date, created, upd
 --
 
 COPY public.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) FROM stdin;
-1	1	Create DB	SQL	V1__Create_DB.sql	2099822983	user	2022-08-12 09:10:23.516151	68	t
-2	2	Add Timesheet rate	SQL	V2__Add_Timesheet_rate.sql	-625244344	user	2022-08-12 09:10:23.594074	2	t
-3	3	Add roles	SQL	V3__Add_roles.sql	1993308928	user	2022-08-12 12:17:21.835036	8	t
+1	1	Create DB	SQL	V1__Create_DB.sql	2099822983	user	2022-08-25 07:19:48.039767	95	t
+2	2	Add Timesheet rate	SQL	V2__Add_Timesheet_rate.sql	-625244344	user	2022-08-25 07:19:48.143978	2	t
+3	3	Add roles	SQL	V3__Add_roles.sql	-690344157	user	2022-08-25 07:19:48.152291	6	t
 \.
 
 
@@ -327,7 +327,7 @@ SELECT pg_catalog.setval('public.customer_id_seq', 1, false);
 -- Name: employee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.employee_id_seq', 9, true);
+SELECT pg_catalog.setval('public.employee_id_seq', 1, false);
 
 
 --
