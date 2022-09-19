@@ -4,7 +4,7 @@ INSERT INTO customer (name, description, created, updated, enabled) VALUES
 
 INSERT INTO project (customer_id, employee_id, name, description, start_date, status, created,updated) VALUES
   (1, 1, 'Maurin ERP', 'Uskomaton erp järjestelmä kaikilla herkuilla', CURRENT_DATE, 'ACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  (1, 1, 'Maurin nettisivut', NULL, CURRENT_DATE, 'INACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+  (1, 1, 'Maurin nettisivut', NULL, CURRENT_DATE, 'ARCHIVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO timesheet (project_id, employee_id, name, description, allocation, created, updated, status) VALUES
   (1, 1, 'Tunnit maurin erppiin', NULL, 100, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'ACTIVE'),
